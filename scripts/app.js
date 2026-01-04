@@ -417,6 +417,7 @@ const App = {
         const closeLogin = document.getElementById('close-login');
         const loginModal = document.getElementById('login-modal');
         const loginBtn = document.getElementById('login-btn');
+        const signupLink = document.getElementById('signup-link');
         
         if (loginForm) {
             loginForm.addEventListener('submit', async (e) => {
@@ -442,6 +443,15 @@ const App = {
         if (closeLogin) {
             closeLogin.addEventListener('click', () => {
                 Modal.hide('login');
+            });
+        }
+        
+        // Signup link handler
+        if (signupLink) {
+            signupLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                Toast.show('Sign up coming soon! Use Premium to unlock all features.', 'info');
+                PremiumManager.initCheckout();
             });
         }
     },
