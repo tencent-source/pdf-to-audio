@@ -5,7 +5,8 @@
 
 const PremiumManager = {
     STORAGE_KEY: 'pdf2audio_premium',
-    API_ENDPOINT: 'https://api.example.com', // Replace with actual API
+    CHECKOUT_URL: 'https://whatstore.lemonsqueezy.com/checkout/buy/d29d9030-7726-49fb-a008-a385665fcda2',
+    API_ENDPOINT: 'https://api.example.com',
     
     /**
      * Check if user has premium
@@ -182,25 +183,13 @@ const PremiumManager = {
     },
     
     /**
-     * Initialize checkout
+     * Initialize checkout - open Lemon Squeezy checkout
      */
-    async initCheckout() {
-        // In production, this would integrate with Stripe/Lemon Squeezy
-        Toast.show('Payment integration coming soon!', 'info');
+    initCheckout() {
+        // Open Lemon Squeezy checkout in new tab
+        window.open(this.CHECKOUT_URL, '_blank');
         
-        // For demo purposes, simulate premium activation
-        if (confirm('Demo mode: Activate premium for 7 days?')) {
-            const expiresAt = new Date();
-            expiresAt.setDate(expiresAt.getDate() + 7);
-            
-            this.setPremiumStatus({
-                plan: 'premium',
-                activatedAt: new Date().toISOString(),
-                expiresAt: expiresAt.toISOString()
-            });
-            
-            Toast.show('Premium activated! Enjoy 7 days of premium features.', 'success');
-        }
+        Toast.show('Checkout opened in new tab! Complete payment to activate premium.', 'info');
     },
     
     /**
